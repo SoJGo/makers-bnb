@@ -37,3 +37,7 @@ Mockups for MakersBnB are available [here](https://github.com/makersacademy/cour
 ---
 
 # User Stories
+
+As a user of Makers BnB
+So that I can make some extra cash
+I would like to list a space
