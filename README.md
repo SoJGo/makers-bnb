@@ -37,3 +37,4 @@ Mockups for MakersBnB are available [here](https://github.com/makersacademy/cour
 ---
 
 # User Stories
+
