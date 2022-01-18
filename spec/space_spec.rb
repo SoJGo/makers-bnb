@@ -2,16 +2,17 @@ require 'space'
 require 'database_helpers'
 
 describe Space do
+  
   describe '.create' do
     it 'creates a space with name, desc and ppn' do
-      space = Space.create('Seaside Space', 'The perfect space for a getaway', 100)
+      space = Space.create(name: 'Seaside Space', description: 'The perfect space for a getaway', price: 100)
 
-      persisted_data = persisted_data(table: spaces, id: space.id)
+      persisted_data = persisted_data(id: space.id)
       
-      expect(space).to eq 'Seaside Space' 
-      expect(space.name).to eq persisted_data['name']
+      expect(space).to be_a Space 
+      expect(space.id).to eq persisted_data['id']
       expect(space.description).to eq 'The perfect space for a getaway'
-      expect(space.price).to eq 100
+      expect(space.price).to eq '100'
     end
   end
 end

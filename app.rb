@@ -5,6 +5,7 @@ require './lib/space'
 class MakersBnB < Sinatra::Base
   configure :development do 
     register Sinatra::Reloader
+    also_reload './lib/space'
   end
 
   get '/' do
@@ -21,7 +22,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces/new' do
-    Space.create(params[:space_name], params[:space_description], params[:space_price])
+    Space.create(name: params[:space_name], description: params[:space_description], price: params[:space_price])
     redirect '/spaces'
   end
 

@@ -1,1 +1,1 @@
-CREATE TABLE spaces(spaces_id SERIAL PRIMARY KEY, name VARCHAR(100), description VARCHAR(1000), price FLOAT, user_id INTEGER);
+CREATE TABLE spaces(id SERIAL PRIMARY KEY, name VARCHAR(100), description VARCHAR(1000), price FLOAT, user_id INTEGER);
