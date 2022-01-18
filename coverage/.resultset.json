@@ -5,6 +5,7 @@
         "lines": [
           1,
           1,
+          1,
           null,
           1,
           1,
@@ -17,6 +18,7 @@
           null,
           1,
           7,
+          7,
           null,
           null,
           1,
@@ -24,11 +26,46 @@
           null,
           null,
           1,
-          null,
+          3,
           3,
           null,
           null,
           1,
+          null
+        ]
+      },
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/lib/space.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          4,
+          4,
+          4,
+          null,
+          null,
+          1,
+          4,
+          null,
+          null,
+          1,
+          7,
+          null,
+          null
+        ]
+      },
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/setup_test_database.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          6,
+          6,
           null
         ]
       },
@@ -81,43 +118,36 @@
       "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/space_spec.rb": {
         "lines": [
           1,
+          1,
           null,
           1,
           1,
           1,
           1,
+          null,
           1,
-          1,
-          1,
+          null,
+          0,
+          0,
+          0,
+          0,
           null,
           null,
           null
         ]
       },
-      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/lib/space.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/database_helpers.rb": {
         "lines": [
           1,
-          1,
           null,
           1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          3,
-          null,
+          0,
+          0,
+          0,
           null
         ]
       }
     },
-    "timestamp": 1642442057
+    "timestamp": 1642509614
   }
 }
