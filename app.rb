@@ -8,6 +8,8 @@ class MakersBnB < Sinatra::Base
     also_reload './lib/space'
   end
 
+  enable :sessions, :method_override
+
   get '/' do
     'Hello!'
   end
@@ -24,6 +26,13 @@ class MakersBnB < Sinatra::Base
   post '/spaces/new' do
     Space.create(name: params[:space_name], description: params[:space_description], price: params[:space_price])
     redirect '/spaces'
+  end
+
+  get '/spaces/:id' do
+    @space_id = params[:id]
+    @space_arr = Space.find(id: @space_id)
+    @space = @space_arr[0]
+    erb :'spaces/:id'
   end
 
   run! if app_file == $0

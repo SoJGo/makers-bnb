@@ -1,0 +1,6 @@
+<%= @space.name %>, <%= @space.description %>, £<%= @space.price %> per night
+
+<form action='/requests' method='post'>
+  <input type='date' name='date'>
+  <input type='submit' value='Request to Book'>
+</form>
