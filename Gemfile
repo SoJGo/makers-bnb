@@ -17,6 +17,7 @@ group :web do
   gem 'sinatra'
   gem 'sinatra-contrib'
   gem 'rack'
+  gem 'webrick'
 end 
 
 group :db do

@@ -1,5 +1,5 @@
 <% @spaces.each do |space| %>
-  <ul><li class='space'><%= space.name %>, <%= space.description %>, £<%= space.price %> per night <a href='/spaces/:id'> [View this space]</a></li></ul>
+  <ul><li class='space'><%= space.name %>, <%= space.description %>, £<%= space.price %> per night <a href=/spaces/<%= space.id %>> [View this space]</a></li></ul>
 <% end %>
 <br><br>
 <form action='/spaces/new' method='GET'>

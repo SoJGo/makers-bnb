@@ -32,7 +32,7 @@ class Space
 
     result = DatabaseConnection.query("SELECT * FROM spaces WHERE id = $1;", [space_id])
     result.map do |space|
-      Space.new(id: space[0]['id'], name: space[0]['name'], description: space[0]['description'], price: space[0]['price'])
+      Space.new(id: space['id'], name: space['name'], description: space['description'], price: space['price'])
     end
   end 
 end
