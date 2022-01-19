@@ -33,9 +33,10 @@ class Space
     space_id = id.to_i
 
     result = DatabaseConnection.query("SELECT * FROM spaces WHERE id = $1;", [space_id])
-    result.map do |space|
+    array = result.map do |space|
       Space.new(id: space['id'], name: space['name'], description: space['description'], 
       price: space['price'], user_id: space['user_id'])
     end
+    array[0]
   end 
 end

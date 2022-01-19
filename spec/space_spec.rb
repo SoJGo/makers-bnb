@@ -18,9 +18,9 @@ describe Space do
 
   describe '.find' do
     it 'finds a space by id' do
-      space = Space.create(name: 'Seaside Space', description: 'The perfect space for a getaway', price: 100)
+      space = Space.create(name: 'Seaside Space', description: 'The perfect space for a getaway', price: 100, user_id: 1)
 
-      found_space = Space.find(space.id)
+      found_space = Space.find(id: space.id)
 
       expect(found_space.name).to eq 'Seaside Space'
     end
