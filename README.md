@@ -51,6 +51,10 @@ As a property provider
 So that I can make more money
 I would like to list more than one space.
 
+As a user of Makers BnB
+So that track my bookings
+I would like to sign up, sign in and out.
+
 As a property provider
 So that a renter can pick when to stay
 I would like to offer a range of available dates.
