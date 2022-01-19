@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/reloader'
 require './lib/space'
+require './lib/bookings'
 require './lib/user'
 require './database_connection_setup'
 
@@ -42,6 +43,12 @@ class MakersBnB < Sinatra::Base
     @user = User.find(id: session[:user_id])
     erb :'spaces/:id'
   end
+
+  post '/requests/:id' do
+    @space_arr = Space.find(id: params[:id])
+    @space = @space_arr[0]
+    Bookings.create(booker_id: session[:user_id], space_id: @space.id, owner_id: @space.user_id, confirmed: false, date: params[:date])
+    redirect '/requests'
 
   post '/users' do
     user = User.create(

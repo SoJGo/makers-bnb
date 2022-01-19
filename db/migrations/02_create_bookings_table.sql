@@ -1,0 +1,1 @@
+CREATE TABLE bookings(booking_id INTEGER, user_id INTEGER, id SERIAL PRIMARY KEY, booking_date DATE);
