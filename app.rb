@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/space'
+require './lib/bookings'
 require './database_connection_setup'
 
 class MakersBnB < Sinatra::Base
@@ -12,7 +13,7 @@ class MakersBnB < Sinatra::Base
   enable :sessions, :method_override
 
   get '/' do
-    'Hello!'
+    redirect '/spaces'
   end
 
   get '/spaces' do
@@ -34,6 +35,13 @@ class MakersBnB < Sinatra::Base
     @space_arr = Space.find(id: @space_id)
     @space = @space_arr[0]
     erb :'spaces/:id'
+  end
+
+  post '/requests/:id' do
+    @space_arr = Space.find(id: params[:id])
+    @space = @space_arr[0]
+    Bookings.create(booker_id: session[:user_id], space_id: @space.id, owner_id: @space.user_id, confirmed: false, date: params[:date])
+    redirect '/requests'
   end
 
   run! if app_file == $0
