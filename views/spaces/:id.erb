@@ -1,6 +1,18 @@
-<%= @space.name %>, <%= @space.description %>, £<%= @space.price %> per night
+<%= @space.name %>, <%= @space.description %>, £<%= @space.price %> per night<br><br>
 
-<form action='/requests' method='post'>
-  <input type='date' name='date'>
-  <input type='submit' value='Request to Book'>
+<% if @user %>
+  <form action='/requests' method='post'>
+    <input type='date' name='date'>
+    <input type='submit' value='Request to Book'>
+  </form>
+<% end %>
+
+<% unless @user %>
+Sign In or Sign Up to Request Booking
+<form action='/' mehtod='get'>
+  <input type='submit' value='Sign Up'>
 </form>
+<form action='/sessions/new' mehtod='get'>
+  <input type='submit' value='Sign In'>
+</form>
+<% end %>

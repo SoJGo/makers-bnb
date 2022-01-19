@@ -1,7 +1,33 @@
+<h3>
+  <%= flash[:notice] %>
+</h3>
+
+<% unless @user %>
+  <form action='/' mehtod='get'>
+    <input type='submit' value='Sign Up'>
+  </form>
+  <form action='/sessions/new' mehtod='get'>
+    <input type='submit' value='Sign In'>
+  </form>
+<% end %>
+
+<% if @user %>
+  <h1>Welcome, <%= @user.username %>!</h1>
+  <form action="/sessions/destroy" method="post">
+    <input type="submit" value="Sign Out" />
+  </form>
+<% end %>
+
+<br><br>
+
 <% @spaces.each do |space| %>
   <ul><li class='space'><%= space.name %>, <%= space.description %>, £<%= space.price %> per night <a href=/spaces/<%= space.id %>> [View this space]</a></li></ul>
 <% end %>
+
 <br><br>
-<form action='/spaces/new' method='GET'>
-  <input type='submit' value='Add space'>
-</form>
+
+<% if @user %>
+  <form action='/spaces/new' method='GET'>
+    <input type='submit' value='Add space'>
+  </form>
+<% end %>
