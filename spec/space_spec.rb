@@ -5,9 +5,9 @@ describe Space do
   
   describe '.create' do
     it 'creates a space with name, desc and ppn' do
-      space = Space.create(name: 'Seaside Space', description: 'The perfect space for a getaway', price: 100)
+      space = Space.create(name: 'Seaside Space', description: 'The perfect space for a getaway', price: 100, user_id: 1)
 
-      persisted_data = persisted_data(id: space.id)
+      persisted_data = persisted_data(table: 'spaces', id: space.id)
       
       expect(space).to be_a Space 
       expect(space.id).to eq persisted_data['id']
