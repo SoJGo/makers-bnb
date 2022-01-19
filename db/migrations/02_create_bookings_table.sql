@@ -1,1 +1,1 @@
-CREATE TABLE bookings(booking_id INTEGER, user_id INTEGER, id SERIAL PRIMARY KEY, booking_date DATE);
+CREATE TABLE bookings(id SERIAL PRIMARY KEY, booker_id INTEGER, space_id INTEGER, owner_id INTEGER, confirmed BOOLEAN,  date DATE);
