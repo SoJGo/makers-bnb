@@ -49,6 +49,10 @@ class MakersBnB < Sinatra::Base
     redirect '/requests'
   end
 
+  get '/requests' do
+    erb :'requests/index'
+  end
+
   post '/users' do
     user = User.create(
       name: params[:name], username: params[:username], 
