@@ -14,8 +14,10 @@ group :development, :test do
 end
 
 group :web do
+  gem 'bcrypt'
   gem 'sinatra'
   gem 'sinatra-contrib'
+  gem 'sinatra-flash'
   gem 'rack'
   gem 'webrick'
 end 
