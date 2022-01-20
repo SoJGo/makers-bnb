@@ -49,6 +49,18 @@ class MakersBnB < Sinatra::Base
     redirect '/requests'
   end
 
+  post '/requests/confirm/:id' do
+    @booking = Bookings.find(id: params[:id])
+    @booking.confirm
+    redirect '/requests'
+  end
+
+  post '/requests/deny/:id' do
+    @booking = Bookings.find(id: params[:id])
+    @booking.deny
+    redirect '/requests'
+  end
+
   get '/requests' do
     @requests_from_user = Bookings.from_user(user_id: session[:user_id])
     @requests_to_user = Bookings.to_user(user_id: session[:user_id])
@@ -58,6 +70,7 @@ class MakersBnB < Sinatra::Base
   get '/requests/:id' do
     @booking = Bookings.find(id: params[:id])
     @space = Space.find(id: @booking.space_id)
+    @booker = User.find(id: @booking.booker_id)
     erb :'requests/:id'
   end
 

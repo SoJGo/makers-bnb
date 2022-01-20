@@ -43,4 +43,22 @@ describe Bookings do
       expect(found_booking.space_name).to eq 'Seaside Space'
     end
   end
+
+  describe '#confirm' do
+    it 'changes confirmed status to Booking Confirmed' do
+      Bookings.create(booker_id: 13, space_id: 11, space_name: 'Seaside Space', owner_id: 3, confirmed: 'Not Confirmed', date: Date.new(2022, 12, 02))
+
+      booking = Bookings.from_user(user_id: 13)[0]
+
+      booking.confirm
+
+      expect(booking.confirmed).to eq 'Booking Confirmed'
+    end
+  end
+
+  describe '#deny' do
+    it 'changes confirmed status to Booking Denied' do
+
+    end
+  end
 end

@@ -42,4 +42,18 @@ class Bookings
    
     Bookings.new(id: booking[0]['id'], booker_id: booking[0]['booker_id'], space_id: booking[0]['space_id'], space_name: booking[0]['space_name'], owner_id: booking[0]['owner_id'], confirmed: booking[0]['confirmed'], date: booking[0]['date'])
   end 
+
+  def confirm
+    DatabaseConnection.query(
+      "UPDATE bookings SET confirmed = 'Booking Confirmed' WHERE id = $1;", 
+      [self.id]
+    )
+  end
+
+  def deny
+    DatabaseConnection.query(
+      "UPDATE bookings SET confirmed = 'Booking Denied' WHERE id = $1;", 
+      [self.id]
+    )
+  end
 end 
