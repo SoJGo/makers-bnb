@@ -1,6 +1,6 @@
 feature 'Property owner can view requests to book' do
   scenario 'can view request for one night' do
-    visit '/spaces'
+    may_signup_goto_spaces
     click_button 'Add space'
     fill_in 'space_name', with: 'Seaside Space'
     fill_in 'space_description', with: 'The perfect space for a getaway'

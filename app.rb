@@ -55,6 +55,12 @@ class MakersBnB < Sinatra::Base
     erb :'requests/index'
   end
 
+  get '/requests/:id' do
+    # @request = Bookings.find(id: params[:id])
+    # @space = Space.find(id: @request.space_id)
+    erb :'requests/:id'
+  end
+
   post '/users' do
     user = User.create(
       name: params[:name], username: params[:username], 

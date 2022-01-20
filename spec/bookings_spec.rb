@@ -2,18 +2,6 @@ require 'bookings'
 require 'database_helpers'
 
 describe Bookings do
-  
-  describe '.create' do
-  #   it 'creates a booking for a space' do
-  #     booking = Bookings.create(booker_id: 1, space_id: 2, owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
-
-  #     persisted_data = persisted_data(table: 'bookings')
- 
-  #     expect(booking.booker_id).to eq persisted_data['booker_id']
-  #     expect(booking.owner_id).to eq persisted_data['owner_id']
-  #   end 
-  end
-
   describe '.from_user' do
     it 'returns an array of bookings from a user' do
       Bookings.create(booker_id: 4, space_id: 7, space_name: 'Place', owner_id: 8, confirmed: false, date: Date.new(2022, 11, 04))

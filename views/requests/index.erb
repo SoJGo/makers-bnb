@@ -1,28 +1,19 @@
-<% @requests_from_user.each do |request| %>
-  <ul>
+Requests I've Made
+
+<ul>
+  <% @requests_from_user.each do |request| %>
     <li class='request'>
-      <%= request.space_name %>, <%= request.confirmed %>, £<%= request.date %>  <a href=/spaces/<%= request.space_id %>> [View this space]</a>
+      <%= request.space_name %>, <%= request.confirmed %>, <%= request.date %>  <a href=/spaces/<%= request.space_id %>> [View this Space]</a>
     </li>
-  </ul>
-<% end %>
+  <% end %>
+</ul>
 
+Requests I've Received
 
-<form action='/requests'  method='post'>
-<h1> Request for 
-
-From: User
-
-Date: 01/01/2022
-
-No. of Spaces Booked:
-</h1>
-
-<u>Other Requests for this Space:</u> <br>
-  <textarea name='space_request' rows="4" cols="50">
-  </textarea>
-
-
-  <input type='submit' value='Confirm Request to Book'>
-
-  <input type='submit' value='Deny Request to Book'> 
-</form>
+<ul>
+  <% @requests_to_user.each do |request| %>
+    <li class='request'>
+      <%= request.space_name %>, <%= request.confirmed %>, <%= request.date %>  <a href=/requests/<%= request.id %>> [View this Request]</a>
+    </li>
+  <% end %>
+</ul>
