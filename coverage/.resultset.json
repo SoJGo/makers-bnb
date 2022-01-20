@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/app.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/app.rb": {
         "lines": [
           1,
           1,
@@ -101,7 +101,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/lib/space.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/lib/space.rb": {
         "lines": [
           1,
           null,
@@ -147,7 +147,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/lib/database_connection.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/lib/database_connection.rb": {
         "lines": [
           1,
           null,
@@ -162,7 +162,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/lib/bookings.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/lib/bookings.rb": {
         "lines": [
           1,
           null,
@@ -170,13 +170,13 @@
           1,
           null,
           1,
-          17,
-          17,
-          17,
-          17,
-          17,
-          17,
-          17,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
           null,
           null,
           1,
@@ -189,7 +189,7 @@
           1,
           null,
           1,
-          8,
+          5,
           null,
           null,
           null,
@@ -197,13 +197,13 @@
           1,
           null,
           1,
-          9,
+          6,
           null,
           null,
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/lib/user.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/lib/user.rb": {
         "lines": [
           1,
           1,
@@ -247,7 +247,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/database_connection_setup.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/database_connection_setup.rb": {
         "lines": [
           1,
           null,
@@ -258,7 +258,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/spec/setup_test_database.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/setup_test_database.rb": {
         "lines": [
           1,
           null,
@@ -268,7 +268,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/spec/features/web_helpers.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/features/web_helpers.rb": {
         "lines": [
           1,
           6,
@@ -280,7 +280,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/spec/bookings_spec.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/bookings_spec.rb": {
         "lines": [
           1,
           1,
@@ -318,7 +318,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/spec/database_helpers.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/database_helpers.rb": {
         "lines": [
           1,
           null,
@@ -329,7 +329,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/spec/features/add_new_space_spec.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/features/add_new_space_spec.rb": {
         "lines": [
           1,
           1,
@@ -364,7 +364,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/spec/features/authentication_spec.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/features/authentication_spec.rb": {
         "lines": [
           1,
           1,
@@ -422,7 +422,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/spec/features/request_booking_spec.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/features/request_booking_spec.rb": {
         "lines": [
           1,
           1,
@@ -441,7 +441,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/spec/features/signing_up_spec.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/features/signing_up_spec.rb": {
         "lines": [
           1,
           1,
@@ -457,7 +457,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/spec/features/view_requests_spec.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/features/view_requests_spec.rb": {
         "lines": [
           1,
           1,
@@ -477,7 +477,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/spec/space_spec.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/space_spec.rb": {
         "lines": [
           1,
           1,
@@ -509,7 +509,7 @@
           null
         ]
       },
-      "/Users/SophieGowen/Dropbox/Makers/repos/week5/makers-bnb/spec/user_spec.rb": {
+      "/Users/anthonychaplin/Desktop/Group_Projects/makers-bnb/spec/user_spec.rb": {
         "lines": [
           1,
           null,
@@ -573,6 +573,6 @@
         ]
       }
     },
-    "timestamp": 1642684181
+    "timestamp": 1642688334
   }
 }
