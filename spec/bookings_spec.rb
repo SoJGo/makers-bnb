@@ -16,11 +16,11 @@ describe Bookings do
 
   describe '.from_user' do
     it 'returns an array of bookings from a user' do
-      Bookings.create(booker_id: 4, space_id: 7, owner_id: 8, confirmed: false, date: Date.new(2022, 11, 04))
+      Bookings.create(booker_id: 4, space_id: 7, space_name: 'Place', owner_id: 8, confirmed: false, date: Date.new(2022, 11, 04))
       
-      Bookings.create(booker_id: 1, space_id: 2, owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
+      Bookings.create(booker_id: 1, space_id: 2, space_name: 'Place', owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
 
-      Bookings.create(booker_id: 4, space_id: 5, owner_id: 6, confirmed: false, date: Date.new(2022, 10, 03))
+      Bookings.create(booker_id: 4, space_id: 5, space_name: 'Place', owner_id: 6, confirmed: false, date: Date.new(2022, 10, 03))
 
       bookings = Bookings.from_user(user_id: 4)
       
@@ -31,11 +31,11 @@ describe Bookings do
 
   describe '.to_user' do
     it 'returns an array of booking to a user' do
-      Bookings.create(booker_id: 4, space_id: 7, owner_id: 8, confirmed: false, date: Date.new(2022, 11, 04))
+      Bookings.create(booker_id: 4, space_id: 7, space_name: 'Place', owner_id: 8, confirmed: false, date: Date.new(2022, 11, 04))
       
-      Bookings.create(booker_id: 1, space_id: 2, owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
+      Bookings.create(booker_id: 1, space_id: 2, space_name: 'Place', owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
 
-      Bookings.create(booker_id: 9, space_id: 5, owner_id: 8, confirmed: false, date: Date.new(2022, 10, 03))
+      Bookings.create(booker_id: 9, space_id: 5, space_name: 'Place', owner_id: 8, confirmed: false, date: Date.new(2022, 10, 03))
 
       bookings = Bookings.to_user(user_id: 8)
       

@@ -45,7 +45,7 @@ class MakersBnB < Sinatra::Base
 
   post '/requests/:id' do
     @space = Space.find(id: params[:id])
-    Bookings.create(booker_id: session[:user_id], space_id: @space.id, owner_id: @space.user_id, confirmed: false, date: params[:date])
+    Bookings.create(booker_id: session[:user_id], space_id: @space.id, space_name: @space.name, owner_id: @space.user_id, confirmed: false, date: params[:date])
     redirect '/requests'
   end
 
