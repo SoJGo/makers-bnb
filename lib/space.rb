@@ -32,11 +32,9 @@ class Space
   def self.find(id:)
     space_id = id.to_i
 
-    result = DatabaseConnection.query("SELECT * FROM spaces WHERE id = $1;", [space_id])
-    array = result.map do |space|
-      Space.new(id: space['id'], name: space['name'], description: space['description'], 
-      price: space['price'], user_id: space['user_id'])
-    end
-    array[0]
+    space = DatabaseConnection.query("SELECT * FROM spaces WHERE id = $1;", [space_id])
+   
+    Space.new(id: space[0]['id'], name: space[0]['name'], description: space[0]['description'],
+    price: space[0]['price'], user_id: space[0]['user_id'])
   end 
 end

@@ -31,4 +31,16 @@ describe Bookings do
       expect(bookings[1].owner_id).to eq 8
     end
   end
+
+  describe '.find' do
+    it 'finds a space by id' do
+      booking = Bookings.create(booker_id: 5, space_id: 2, space_name: 'Seaside Space', owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
+
+      request_id = Bookings.from_user(user_id: 5)[0].id
+
+      found_booking = Bookings.find(id: request_id)
+
+      expect(found_booking.space_name).to eq 'Seaside Space'
+    end
+  end
 end

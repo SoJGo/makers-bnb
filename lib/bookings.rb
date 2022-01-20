@@ -9,7 +9,7 @@ class Bookings
     @space_id = space_id.to_i
     @space_name = space_name
     @owner_id = owner_id.to_i
-    @confirmed = confirmed == 'f' ? 'Not Confirmed' : 'Booking Confirmed'
+    @confirmed = confirmed
     @date = date
   end
 
@@ -34,4 +34,12 @@ class Bookings
       Bookings.new(id: booking['id'], booker_id: booking['booker_id'], space_id: booking['space_id'], space_name: booking['space_name'], owner_id: booking['owner_id'], confirmed: booking['confirmed'], date: booking ['date'])
     end
   end
+
+  def self.find(id:)
+    booking_id = id.to_i
+
+    booking = DatabaseConnection.query("SELECT * FROM bookings WHERE id = $1;", [booking_id])
+   
+    Bookings.new(id: booking[0]['id'], booker_id: booking[0]['booker_id'], space_id: booking[0]['space_id'], space_name: booking[0]['space_name'], owner_id: booking[0]['owner_id'], confirmed: booking[0]['confirmed'], date: booking[0]['date'])
+  end 
 end 
