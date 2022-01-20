@@ -32,7 +32,7 @@ class MakersBnB < Sinatra::Base
 
   post '/spaces/new' do
     Space.create(name: params[:space_name], description: params[:space_description], 
-    price: params[:space_price], user_id: session[:user_id])
+    price: params[:space_price], user_id: session[:user_id], start_date: params[:start_date], end_date: params[:end_date])
     redirect '/spaces'
   end
 
@@ -45,7 +45,19 @@ class MakersBnB < Sinatra::Base
 
   post '/requests/:id' do
     @space = Space.find(id: params[:id])
-    Bookings.create(booker_id: session[:user_id], space_id: @space.id, space_name: @space.name, owner_id: @space.user_id, confirmed: false, date: params[:date])
+    Bookings.create(booker_id: session[:user_id], space_id: @space.id, space_name: @space.name, owner_id: @space.user_id, confirmed: 'Not Confirmed', date: params[:date])
+    redirect '/requests'
+  end
+
+  post '/requests/confirm/:id' do
+    @booking = Bookings.find(id: params[:id])
+    @booking.confirm
+    redirect '/requests'
+  end
+
+  post '/requests/deny/:id' do
+    @booking = Bookings.find(id: params[:id])
+    @booking.deny
     redirect '/requests'
   end
 
@@ -56,8 +68,9 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/requests/:id' do
-    # @request = Bookings.find(id: params[:id])
-    # @space = Space.find(id: @request.space_id)
+    @booking = Bookings.find(id: params[:id])
+    @space = Space.find(id: @booking.space_id)
+    @booker = User.find(id: @booking.booker_id)
     erb :'requests/:id'
   end
 

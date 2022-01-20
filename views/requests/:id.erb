@@ -1,18 +1,19 @@
-<h1> Request for 
+<h1> Request for <%= @space.name %>
+<br>
+From: User <%= @booker.username %>
+<br>
+Date: <%= @booking.date %>
+<br>
 
-From: User
-
-Date: 01/01/2022
-
-No. of Spaces Booked:
 </h1>
 
 <u>Other Requests for this Space:</u> <br>
-  <textarea name='space_request' rows="4" cols="50">
-  </textarea>
 
-
+<form action=<%= "/requests/confirm/#{@booking.id}" %> method='post'>
   <input type='submit' value='Confirm Request to Book'>
+</form>
 
+<form action=<%= "/requests/deny/#{@booking.id}" %> method='post'>
   <input type='submit' value='Deny Request to Book'> 
 </form>
+
