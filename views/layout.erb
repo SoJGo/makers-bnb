@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" />
+    <title>Makers BnB</title>
+  </head>
+  <body>
+
+<% if @user %>
+  <form action="/sessions/destroy" method="post">
+  <input type="submit" value="Sign Out" style="float: right;"/>
+  </form>
+<% end %>
+<%= yield %>
+</body>
+</html>

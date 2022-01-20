@@ -1,17 +1,19 @@
-<h1><u>List a new Space</u></h1>
+<h2><u>List a new Space</u></h2>
 
 <form action='/spaces/new' method='POST'>
-<u>Name:</u><br>
+<p>Name:<br>
   <input type='text' name='space_name'/>
-<br>
+  </p>
 
-<u>Description:</u> <br>
+<p>Description:<br>
   <textarea name='space_description' rows="4" cols="50">
   </textarea>
-<br>
+  </p>
 
-<u>Price:</u><br>
+<p>Price:<br>
   <input type='text' name='space_price' />
+
+ <br><br>
 
 <u>Available From:</u><br>
   <input type='date' name='start_date' />
@@ -20,4 +22,5 @@
   <input type='date' name='end_date' />
 
   <input type='submit' value='List space'>
+  </p>
 </form>

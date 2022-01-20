@@ -1,0 +1,57 @@
+* {
+background: #6dbde2;
+text-align: center;
+
+}
+
+.space {
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border: 1.5px solid black;
+  padding: 5px
+}
+
+tr, td {
+  text-align: left;
+  border: 1.5px solid black;
+  padding: 20px 
+}
+
+
+h1 { 
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+  font-weight: bold; 
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: black;
+  font-size: 28px;
+}
+
+h2 {
+
+}
+
+h3 {
+
+
+}
+
+li {
+
+}
+
+input {
+
+}
+
+p {
+
+}

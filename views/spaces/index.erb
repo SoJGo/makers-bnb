@@ -1,3 +1,4 @@
+<h1>Welcome, <%= @user.username %>!</h1>
 <h3>
   <%= flash[:notice] %>
 </h3>
@@ -11,19 +12,12 @@
   </form>
 <% end %>
 
-<% if @user %>
-  <h1>Welcome, <%= @user.username %>!</h1>
-  <form action="/sessions/destroy" method="post">
-    <input type="submit" value="Sign Out" />
-  </form>
-<% end %>
-
-<br><br>
-
+<table cellspacing="20px"> 
 <% @spaces.each do |space| %>
-  <ul><li class='space'><%= space.name %>, <%= space.description %>, £<%= space.price %> per night <a href=/spaces/<%= space.id %>> [View this space]</a></li></ul>
+  <tr class='space'><td><%= space.name %>, <%= space.description %>, £<%= space.price %> per night <a href=/spaces/<%= space.id %>> [View this space]</a></td></tr>
+  <br>
 <% end %>
-
+</table>
 <br><br>
 
 <% if @user %>
@@ -31,3 +25,6 @@
     <input type='submit' value='Add space'>
   </form>
 <% end %>
+
+<br>
+
