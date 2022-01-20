@@ -50,6 +50,8 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/requests' do
+    @requests_from_user = Bookings.from_user(user_id: session[:user_id])
+    @requests_to_user = Bookings.to_user(user_id: session[:user_id])
     erb :'requests/index'
   end
 

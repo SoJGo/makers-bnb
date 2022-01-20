@@ -1,3 +1,8 @@
+<% @requests_from_user.each do |request| %>
+  <ul><li class='request'><%= space.name %>, <%= space.description %>, £<%= space.price %> per night <a href=/spaces/<%= space.id %>> [View this space]</a></li></ul>
+<% end %>
+
+
 <form action='/requests'  method='post'>
 <h1> Request for 
 

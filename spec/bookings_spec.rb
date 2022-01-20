@@ -4,8 +4,43 @@ require 'database_helpers'
 describe Bookings do
   
   describe '.create' do
-    it 'creates a booking for a space' do
-      booking = Bookings.create(booker_id: 1, space_id: 2, owner_id: 3, confirmed: FALSE, date: )
-    end 
+  #   it 'creates a booking for a space' do
+  #     booking = Bookings.create(booker_id: 1, space_id: 2, owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
+
+  #     persisted_data = persisted_data(table: 'bookings')
+ 
+  #     expect(booking.booker_id).to eq persisted_data['booker_id']
+  #     expect(booking.owner_id).to eq persisted_data['owner_id']
+  #   end 
   end
-end 
+
+  describe '.from_user' do
+    it 'returns an array of bookings from a user' do
+      Bookings.create(booker_id: 4, space_id: 7, owner_id: 8, confirmed: false, date: Date.new(2022, 11, 04))
+      
+      Bookings.create(booker_id: 1, space_id: 2, owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
+
+      Bookings.create(booker_id: 4, space_id: 5, owner_id: 6, confirmed: false, date: Date.new(2022, 10, 03))
+
+      bookings = Bookings.from_user(user_id: 4)
+      
+      expect(bookings[0].booker_id).to eq 4
+      expect(bookings[1].booker_id).to eq 4
+    end
+  end
+
+  describe '.to_user' do
+    it 'returns an array of booking to a user' do
+      Bookings.create(booker_id: 4, space_id: 7, owner_id: 8, confirmed: false, date: Date.new(2022, 11, 04))
+      
+      Bookings.create(booker_id: 1, space_id: 2, owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
+
+      Bookings.create(booker_id: 9, space_id: 5, owner_id: 8, confirmed: false, date: Date.new(2022, 10, 03))
+
+      bookings = Bookings.to_user(user_id: 8)
+      
+      expect(bookings[0].owner_id).to eq 8
+      expect(bookings[1].owner_id).to eq 8
+    end
+  end
+end

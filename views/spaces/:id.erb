@@ -1,5 +1,5 @@
 <%= @space.name %>, <%= @space.description %>, £<%= @space.price %> per night<br><br>
-
+Pick a date to book <br>
 <% if @user %>
   <form action=<%= "/requests/#{@space.id}" %> method='post'>
     <input type='date' name='date'>
