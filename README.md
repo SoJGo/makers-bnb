@@ -79,3 +79,34 @@ As a property provider
 So that I can be selective about guests
 I would like my space to be available until I approve a request.
 ```
+
+# How to use
+
+## To set up the project
+
+Clone this repository and then run:
+
+bundle
+
+## To set up the database
+
+Connect to psql and create the makers_bnb and makers_bnb_test databases:
+
+CREATE DATABASE makers_bnb;
+CREATE DATABASE makers_bnb_test;
+
+### To set up the appropriate tables, connect to each database in psql and run the SQL scripts in the db/migrations folder in the given order.
+
+## To run the Makers BnB app:
+
+rackup
+
+## To view spaces, navigate to localhost:9292/spaces.
+
+## To run tests:
+
+rspec
+
+## To run linting:
+
+rubocop
