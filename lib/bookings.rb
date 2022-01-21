@@ -52,6 +52,32 @@ class Bookings
     Bookings.new(id: booking[0]['id'], booker_id: booking[0]['booker_id'], space_id: booking[0]['space_id'], space_name: booking[0]['space_name'], owner_id: booking[0]['owner_id'], confirmed: booking[0]['confirmed'], check_in: booking[0]['check_in'], check_out: booking[0]['check_out'])
   end
 
+  def self.available(spaces:, check_in:, check_out:)
+    available = []
+    conflicts = []
+
+    spaces.each do |space|
+      bookings_per_space  = DatabaseConnection.query(
+        "SELECT * FROM bookings WHERE space_id = $1 AND confirmed = $2;", 
+        [space.id, 'Booking Confirmed']
+      )
+
+      bookings_per_space.each do |booking|
+        if check_in < booking['check_out'] && check_out > booking['check_in']
+          conflicts << booking
+        end
+      end
+
+      if conflicts.empty? && check_in >= space.start_date && check_out <= space.end_date
+        available << space
+      end
+
+      conflicts = []
+    end
+
+    available
+  end
+
   def confirm
     DatabaseConnection.query(
       "UPDATE bookings SET confirmed = 'Booking Confirmed' WHERE id = $1;", 

@@ -30,16 +30,18 @@
 <form action='/spaces' method='get'>
 
 Check-in:
-  <input type='date' name='start_date' min=<%= DateTime.now.strftime("%Y-%m-%d") %>>
+  <input type='date' name='check_in' min=<%= DateTime.now.strftime("%Y-%m-%d") %>>
 
 Check-out:
-  <input type='date' name='end_date' min=<%= DateTime.now.strftime("%Y-%m-%d") %>><br><br>
+  <input type='date' name='check_out' min=<%= DateTime.now.strftime("%Y-%m-%d") %>><br><br>
 
   <input type='submit' value='Search Spaces'>
   </p>
 </form>
 
 <br>
+
+<% unless @spaces.empty? %>
 
 <table cellspacing="20px"> 
   <% @spaces.each do |space| %>
@@ -54,5 +56,9 @@ Check-out:
     </tr>
   <% end %>
 </table>
-<br><br>
 
+<% else %>
+
+<h3> No Spaces Available For Your Selected Dates</h3>
+
+<% end %>

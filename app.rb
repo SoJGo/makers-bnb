@@ -23,8 +23,12 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces' do
     @user = User.find(id: session[:user_id])
-    @spaces = Space.all
-    # @available_spaces = Bookings.available(spaces: @all_spaces, check_in:, check_out:)
+    @all_spaces = Space.all
+    if params[:check_in] && params[:check_out]
+      @spaces = Bookings.available(spaces: @all_spaces, check_in: params[:check_in], check_out: params[:check_out])
+    else
+      @spaces = Space.all
+    end
     erb :'spaces/index'
   end
 
