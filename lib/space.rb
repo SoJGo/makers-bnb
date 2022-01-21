@@ -25,10 +25,19 @@ class Space
   def self.all
     result = DatabaseConnection.query('SELECT * FROM spaces;')
 
-    result.map do |space|
+    all_spaces = result.map do |space|
       Space.new(id: space['id'], name: space['name'], description: space['description'], 
       price: space['price'], user_id: space['user_id'], start_date: space['start_date'], end_date: space['end_date'])
     end
+
+    available_spaces = []
+
+    all_spaces.each do |space|
+      if space.end_date > DateTime.now.strftime("%Y-%m-%d")
+        available_spaces << space
+      end
+    end
+    available_spaces
   end 
 
   def self.find(id:)

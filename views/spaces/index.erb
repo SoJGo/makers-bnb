@@ -26,6 +26,19 @@
   </form>
 <% end %>
 
+<br><br>
+<form action='/spaces' method='get'>
+
+Check-in:
+  <input type='date' name='start_date' min=<%= DateTime.now.strftime("%Y-%m-%d") %>>
+
+Check-out:
+  <input type='date' name='end_date' min=<%= DateTime.now.strftime("%Y-%m-%d") %>><br><br>
+
+  <input type='submit' value='Search Spaces'>
+  </p>
+</form>
+
 <br>
 
 <table cellspacing="20px"> 
@@ -34,7 +47,7 @@
       <td>
         <a class='space_click' href=/spaces/<%= space.id %>>
           <div>
-            <u>Space: </u><%= space.name %><br><u>Description: </u><br><%= space.description %><br><u>Price per Night: </u>£<%= space.price %><br>
+            <u>Space: </u><%= space.name %><br><u>Description: </u><br><%= space.description %><br><u>Availabilitly:</u><%= space.start_date %> - <%= space.end_date %><br><u>Price per Night: </u>£<%= space.price %><br>
           </div>
         </a>
       </td>

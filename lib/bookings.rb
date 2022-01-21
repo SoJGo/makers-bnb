@@ -50,7 +50,7 @@ class Bookings
     booking = DatabaseConnection.query("SELECT * FROM bookings WHERE id = $1;", [booking_id])
    
     Bookings.new(id: booking[0]['id'], booker_id: booking[0]['booker_id'], space_id: booking[0]['space_id'], space_name: booking[0]['space_name'], owner_id: booking[0]['owner_id'], confirmed: booking[0]['confirmed'], check_in: booking[0]['check_in'], check_out: booking[0]['check_out'])
-  end 
+  end
 
   def confirm
     DatabaseConnection.query(
@@ -65,4 +65,4 @@ class Bookings
       [self.id]
     )
   end
-end 
+end
