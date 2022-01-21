@@ -17,6 +17,7 @@ describe Bookings do
       
       expect(bookings[0].booker_id).to eq 4
       expect(bookings[1].booker_id).to eq 4
+      expect(bookings.length).to eq 2
     end
   end
 
@@ -35,6 +36,29 @@ describe Bookings do
       
       expect(bookings[0].owner_id).to eq 8
       expect(bookings[1].owner_id).to eq 8
+      expect(bookings.length).to eq 2
+    end
+  end
+
+  describe '.by_space' do
+    it 'returns an array of bookings by space' do
+      Bookings.create(booker_id: 4, space_id: 9, space_name: 'Place 1', owner_id: 8, confirmed: false, check_in: Date.new(2022, 11, 04), check_out: Date.new(2022, 12, 05))
+
+      
+      Bookings.create(booker_id: 1, space_id: 6, space_name: 'Other Place', owner_id: 3, confirmed: false, check_in: Date.new(2022, 12, 02), check_out: Date.new(2022, 12, 05))
+
+
+      Bookings.create(booker_id: 9, space_id: 9, space_name: 'Place 2', owner_id: 8, confirmed: false, check_in: Date.new(2022, 10, 03), check_out: Date.new(2022, 12, 05))
+
+      Bookings.create(booker_id: 6, space_id: 9, space_name: 'Place 3', owner_id: 8, confirmed: false, check_in: Date.new(2022, 10, 03), check_out: Date.new(2022, 12, 05))
+
+
+      bookings = Bookings.by_space(space_id: 9)
+      
+      expect(bookings[0].space_id).to eq 9
+      expect(bookings[1].space_id).to eq 9
+      expect(bookings[2].space_id).to eq 9
+      expect(bookings.length).to eq 3
     end
   end
 
