@@ -1,21 +1,22 @@
 require_relative 'database_connection'
 
 class Bookings
-  attr_reader :id, :booker_id, :space_id, :space_name, :owner_id, :confirmed, :date
+  attr_reader :id, :booker_id, :space_id, :space_name, :owner_id, :confirmed, :check_in, :check_out
 
-  def initialize(id:, booker_id:, space_id:, space_name:, owner_id:, confirmed:, date:)
+  def initialize(id:, booker_id:, space_id:, space_name:, owner_id:, confirmed:, check_in:, check_out:)
     @id = id.to_i
     @booker_id = booker_id.to_i
     @space_id = space_id.to_i
     @space_name = space_name
     @owner_id = owner_id.to_i
     @confirmed = confirmed
-    @date = date
+    @check_in = check_in
+    @check_out = check_out
   end
 
-  def self.create(booker_id:, space_id:, space_name:, owner_id:, confirmed:, date:)
-    result = DatabaseConnection.query("INSERT INTO bookings(booker_id, space_id, space_name, owner_id, confirmed, date) VALUES ($1, $2, $3, $4, $5, $6);",
-      [booker_id, space_id, space_name, owner_id, confirmed, date]
+  def self.create(booker_id:, space_id:, space_name:, owner_id:, confirmed:, check_in:, check_out:)
+    result = DatabaseConnection.query("INSERT INTO bookings(booker_id, space_id, space_name, owner_id, confirmed, check_in, check_out) VALUES ($1, $2, $3, $4, $5, $6, $7);",
+      [booker_id, space_id, space_name, owner_id, confirmed, check_in, check_out]
     )
   end
 
@@ -23,7 +24,7 @@ class Bookings
     result = DatabaseConnection.query("SELECT * FROM bookings WHERE booker_id = $1;", [user_id])
     
     result.map do |booking|
-      Bookings.new(id: booking['id'], booker_id: booking['booker_id'], space_id: booking['space_id'], space_name: booking['space_name'], owner_id: booking['owner_id'], confirmed: booking['confirmed'], date: booking ['date'])
+      Bookings.new(id: booking['id'], booker_id: booking['booker_id'], space_id: booking['space_id'], space_name: booking['space_name'], owner_id: booking['owner_id'], confirmed: booking['confirmed'], check_in: booking['check_in'], check_out: booking['check_out'])
     end
   end
 
@@ -31,7 +32,15 @@ class Bookings
     result = DatabaseConnection.query("SELECT * FROM bookings WHERE owner_id = $1;", [user_id])
     
     result.map do |booking|
-      Bookings.new(id: booking['id'], booker_id: booking['booker_id'], space_id: booking['space_id'], space_name: booking['space_name'], owner_id: booking['owner_id'], confirmed: booking['confirmed'], date: booking ['date'])
+      Bookings.new(id: booking['id'], booker_id: booking['booker_id'], space_id: booking['space_id'], space_name: booking['space_name'], owner_id: booking['owner_id'], confirmed: booking['confirmed'], check_in: booking['check_in'], check_out: booking['check_out'])
+    end
+  end
+
+  def self.by_space(space_id:)
+    result = DatabaseConnection.query("SELECT * FROM bookings WHERE space_id = $1;", [space_id])
+    
+    result.map do |booking|
+      Bookings.new(id: booking['id'], booker_id: booking['booker_id'], space_id: booking['space_id'], space_name: booking['space_name'], owner_id: booking['owner_id'], confirmed: booking['confirmed'], check_in: booking['check_in'], check_out: booking['check_out'])
     end
   end
 
@@ -40,7 +49,7 @@ class Bookings
 
     booking = DatabaseConnection.query("SELECT * FROM bookings WHERE id = $1;", [booking_id])
    
-    Bookings.new(id: booking[0]['id'], booker_id: booking[0]['booker_id'], space_id: booking[0]['space_id'], space_name: booking[0]['space_name'], owner_id: booking[0]['owner_id'], confirmed: booking[0]['confirmed'], date: booking[0]['date'])
+    Bookings.new(id: booking[0]['id'], booker_id: booking[0]['booker_id'], space_id: booking[0]['space_id'], space_name: booking[0]['space_name'], owner_id: booking[0]['owner_id'], confirmed: booking[0]['confirmed'], check_in: booking[0]['check_in'], check_out: booking[0]['check_out'])
   end 
 
   def confirm

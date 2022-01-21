@@ -11,6 +11,7 @@ class MakersBnB < Sinatra::Base
     register Sinatra::Reloader
     also_reload './lib/space'
     also_reload './lib/user'
+    also_reload './lib/bookings'
   end
 
   enable :sessions, :method_override
@@ -45,7 +46,7 @@ class MakersBnB < Sinatra::Base
 
   post '/requests/:id' do
     @space = Space.find(id: params[:id])
-    Bookings.create(booker_id: session[:user_id], space_id: @space.id, space_name: @space.name, owner_id: @space.user_id, confirmed: 'Not Confirmed', date: params[:date])
+    Bookings.create(booker_id: session[:user_id], space_id: @space.id, space_name: @space.name, owner_id: @space.user_id, confirmed: 'Not Confirmed', check_in: params[:check_in], check_out: params[:check_out])
     redirect '/requests'
   end
 
@@ -70,17 +71,23 @@ class MakersBnB < Sinatra::Base
   get '/requests/:id' do
     @booking = Bookings.find(id: params[:id])
     @space = Space.find(id: @booking.space_id)
+    @requests_for_space = Bookings.by_space(space_id: @space.id)
     @booker = User.find(id: @booking.booker_id)
     erb :'requests/:id'
   end
 
   post '/users' do
-    user = User.create(
-      name: params[:name], username: params[:username], 
-      email: params[:email], password: params[:password]
-    )
-    session[:user_id] = user.id
-    redirect '/spaces'
+    if params[:password] == params[:password2]
+      user = User.create(
+        name: params[:name], username: params[:username], 
+        email: params[:email], password: params[:password]
+      )
+      session[:user_id] = user.id
+      redirect '/spaces'
+    else
+      flash[:notice] = 'Passwords do not match...'
+      redirect '/'
+    end
   end
 
   get '/sessions/new' do
@@ -102,7 +109,7 @@ class MakersBnB < Sinatra::Base
   post '/sessions/destroy' do
     session.clear
     flash[:notice] = 'Bye for now. Come back soon!'
-    redirect '/'
+    redirect '/sessions/new'
   end
 
   run! if app_file == $0

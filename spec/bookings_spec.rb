@@ -4,11 +4,14 @@ require 'database_helpers'
 describe Bookings do
   describe '.from_user' do
     it 'returns an array of bookings from a user' do
-      Bookings.create(booker_id: 4, space_id: 7, space_name: 'Place', owner_id: 8, confirmed: false, date: Date.new(2022, 11, 04))
-      
-      Bookings.create(booker_id: 1, space_id: 2, space_name: 'Place', owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
+      Bookings.create(booker_id: 4, space_id: 7, space_name: 'Place', owner_id: 8, confirmed: false, check_in: Date.new(2022, 11, 04), check_out: Date.new(2022, 12, 05))
 
-      Bookings.create(booker_id: 4, space_id: 5, space_name: 'Place', owner_id: 6, confirmed: false, date: Date.new(2022, 10, 03))
+      
+      Bookings.create(booker_id: 1, space_id: 2, space_name: 'Place', owner_id: 3, confirmed: false, check_in: Date.new(2022, 12, 02), check_out: Date.new(2022, 12, 05))
+
+
+      Bookings.create(booker_id: 4, space_id: 5, space_name: 'Place', owner_id: 6, confirmed: false, check_in: Date.new(2022, 10, 03), check_out: Date.new(2022, 12, 05))
+
 
       bookings = Bookings.from_user(user_id: 4)
       
@@ -19,11 +22,14 @@ describe Bookings do
 
   describe '.to_user' do
     it 'returns an array of booking to a user' do
-      Bookings.create(booker_id: 4, space_id: 7, space_name: 'Place', owner_id: 8, confirmed: false, date: Date.new(2022, 11, 04))
-      
-      Bookings.create(booker_id: 1, space_id: 2, space_name: 'Place', owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
+      Bookings.create(booker_id: 4, space_id: 7, space_name: 'Place', owner_id: 8, confirmed: false, check_in: Date.new(2022, 11, 04), check_out: Date.new(2022, 12, 05))
 
-      Bookings.create(booker_id: 9, space_id: 5, space_name: 'Place', owner_id: 8, confirmed: false, date: Date.new(2022, 10, 03))
+      
+      Bookings.create(booker_id: 1, space_id: 2, space_name: 'Place', owner_id: 3, confirmed: false, check_in: Date.new(2022, 12, 02), check_out: Date.new(2022, 12, 05))
+
+
+      Bookings.create(booker_id: 9, space_id: 5, space_name: 'Place', owner_id: 8, confirmed: false, check_in: Date.new(2022, 10, 03), check_out: Date.new(2022, 12, 05))
+
 
       bookings = Bookings.to_user(user_id: 8)
       
@@ -34,7 +40,8 @@ describe Bookings do
 
   describe '.find' do
     it 'finds a space by id' do
-      booking = Bookings.create(booker_id: 5, space_id: 2, space_name: 'Seaside Space', owner_id: 3, confirmed: false, date: Date.new(2022, 12, 02))
+      booking = Bookings.create(booker_id: 5, space_id: 2, space_name: 'Seaside Space', owner_id: 3, confirmed: false, check_in: Date.new(2022, 12, 02), check_out: Date.new(2022, 12, 05))
+
 
       request_id = Bookings.from_user(user_id: 5)[0].id
 
@@ -46,19 +53,26 @@ describe Bookings do
 
   describe '#confirm' do
     it 'changes confirmed status to Booking Confirmed' do
-      Bookings.create(booker_id: 13, space_id: 11, space_name: 'Seaside Space', owner_id: 3, confirmed: 'Not Confirmed', date: Date.new(2022, 12, 02))
+      Bookings.create(booker_id: 13, space_id: 11, space_name: 'Seaside Space', owner_id: 3, confirmed: 'Not Confirmed', check_in: Date.new(2022, 12, 02), check_out: Date.new(2022, 12, 05))
+
 
       booking = Bookings.from_user(user_id: 13)[0]
-
       booking.confirm
+      confirmed_booking = Bookings.from_user(user_id: 13)[0]
 
-      expect(booking.confirmed).to eq 'Booking Confirmed'
+      expect(confirmed_booking.confirmed).to eq 'Booking Confirmed'
     end
   end
 
   describe '#deny' do
     it 'changes confirmed status to Booking Denied' do
+      Bookings.create(booker_id: 17, space_id: 11, space_name: 'Seaside Space', owner_id: 3, confirmed: 'Not Confirmed', check_in: Date.new(2022, 12, 02), check_out: Date.new(2022, 12, 05))
 
+      booking = Bookings.from_user(user_id: 17)[0]
+      booking.deny
+      denied_booking = Bookings.from_user(user_id: 17)[0]
+
+      expect(denied_booking.confirmed).to eq 'Booking Denied'
     end
   end
 end

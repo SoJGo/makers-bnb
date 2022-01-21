@@ -3,7 +3,7 @@ feature 'Authentication' do
     User.create(name: 'May McMaker', username: 'MayMcMaker', email: 'May@example.com', password: 'Marbles123')
 
     visit '/'
-    click_button 'Sign In'
+    click_link 'Sign In'
     fill_in 'email', with: 'May@example.com'
     fill_in 'password', with: 'Marbles123'
     click_button 'Sign In'
@@ -15,7 +15,7 @@ feature 'Authentication' do
     User.create(name: 'May McMaker', username: 'MayMcMaker', email: 'May@example.com', password: 'Marbles123')
 
     visit '/'
-    click_button 'Sign In'
+    click_link 'Sign In'
     fill_in 'email', with: 'Moy@eximple.com'
     fill_in 'password', with: 'Marbles123'
     click_button 'Sign In'
@@ -28,7 +28,7 @@ feature 'Authentication' do
     User.create(name: 'May McMaker', username: 'MayMcMaker', email: 'May@example.com', password: 'Marbles123')
 
     visit '/'
-    click_button 'Sign In'
+    click_link 'Sign In'
     fill_in 'email', with: 'May@example.com'
     fill_in 'password', with: 'Yoyos123'
     click_button 'Sign In'
@@ -41,7 +41,7 @@ feature 'Authentication' do
     User.create(name: 'May McMaker', username: 'MayMcMaker', email: 'May@example.com', password: 'Marbles123')
     
     visit '/'
-    click_button 'Sign In'
+    click_link 'Sign In'
     fill_in 'email', with: 'May@example.com'
     fill_in 'password', with: 'Marbles123'
     click_button 'Sign In'

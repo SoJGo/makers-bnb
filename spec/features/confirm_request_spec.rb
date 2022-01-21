@@ -1,5 +1,5 @@
-feature 'User can request to book' do
-  scenario 'can request a booking' do
+feature 'Property owner can view booking requests' do
+  scenario 'can confirm a booking request' do
     may_signup_goto_spaces
     click_button 'Add space'
     fill_in 'space_name', with: 'Seaside Space'
@@ -14,7 +14,8 @@ feature 'User can request to book' do
     fill_in 'check_in', with: '2022-01-18'
     fill_in 'check_out', with: '2022-01-21'
     click_button 'Request to Book'
-    expect(page).to have_content "Requests I've Made"
-    expect(page).to have_content 'Space: Seaside Space'
-  end
-end
+    click_link '[View this Request]'
+    click_button 'Confirm Request to Book'
+    expect(page).to have_content 'Space: Seaside Space - Booking Confirmed'
+  end 
+end 

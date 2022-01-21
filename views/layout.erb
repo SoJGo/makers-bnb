@@ -6,12 +6,8 @@
     <title>Makers BnB</title>
   </head>
   <body>
+  
+  <%= yield %>
 
-<% if @user %>
-  <form action="/sessions/destroy" method="post">
-  <input type="submit" value="Sign Out" style="float: right;"/>
-  </form>
-<% end %>
-<%= yield %>
-</body>
+  </body>
 </html>

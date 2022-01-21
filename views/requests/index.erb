@@ -1,19 +1,44 @@
-Requests I've Made
+<div class='head'>
+  <ul>
+    <li>
+      <form action="/sessions/destroy" method="post">
+        <input type="submit" value="Sign Out"/>
+      </form>
+    </li>
+    <li>
+      <a href='/requests'><button>Requests</button></a>
+    </li>
+    <li>
+      <a href='/spaces'><button>Spaces</button></a>
+    </li>
+  </ul>
+</div>
+
+<h1 class='logo'> MAKERS<br>BnB </h1>
+
+<br>
+
+<h1>Requests I've Made</h1>
 
 <ul>
   <% @requests_from_user.each do |request| %>
     <li class='request'>
-      <%= request.space_name %>, <%= request.confirmed %>, <%= request.date %>  <a href=/spaces/<%= request.space_id %>> [View this Space]</a>
+      Space: <%= request.space_name %> - <%= request.confirmed %><br>
+      Check-in: <%= request.check_in %>   Check-out: <%= request.check_out %><br>
+      <a href=/spaces/<%= request.space_id %>> [View this Space]</a><br><br>
     </li>
   <% end %>
 </ul>
+<br><br>
 
-Requests I've Received
+<h1>Requests I've Received</h1>
 
 <ul>
   <% @requests_to_user.each do |request| %>
     <li class='request'>
-      <%= request.space_name %>, <%= request.confirmed %>, <%= request.date %>  <a href=/requests/<%= request.id %>> [View this Request]</a>
+      Space: <%= request.space_name %> - <%= request.confirmed %><br>
+      Check-in: <%= request.check_in %>   Check-out: <%= request.check_out %><br>
+      <a href=/requests/<%= request.id %>> [View this Request]</a><br><br>
     </li>
   <% end %>
 </ul>

@@ -1,24 +1,24 @@
+<div class='head'>
+  <ul>
+    <li>
+      <form action="/sessions/destroy" method="post">
+        <input type="submit" value="Sign Out"/>
+      </form>
+    </li>
+    <li>
+      <a href='/requests'><button>Requests</button></a>
+    </li>
+    <li>
+      <a href='/spaces'><button>Spaces</button></a>
+    </li>
+  </ul>
+</div>
+
+<h1 class='logo'> MAKERS<br>BnB </h1>
+
+<br>
+
 <h1>Welcome, <%= @user.username %>!</h1>
-<h3>
-  <%= flash[:notice] %>
-</h3>
-
-<% unless @user %>
-  <form action='/' method='get'>
-    <input type='submit' value='Sign Up'>
-  </form>
-  <form action='/sessions/new' method='get'>
-    <input type='submit' value='Sign In'>
-  </form>
-<% end %>
-
-<table cellspacing="20px"> 
-<% @spaces.each do |space| %>
-  <tr class='space'><td><%= space.name %>, <%= space.description %>, £<%= space.price %> per night <a href=/spaces/<%= space.id %>> [View this space]</a></td></tr>
-  <br>
-<% end %>
-</table>
-<br><br>
 
 <% if @user %>
   <form action='/spaces/new' method='GET'>
@@ -27,4 +27,19 @@
 <% end %>
 
 <br>
+
+<table cellspacing="20px"> 
+  <% @spaces.each do |space| %>
+    <tr class='space'>
+      <td>
+        <a class='space_click' href=/spaces/<%= space.id %>>
+          <div>
+            <u>Space: </u><%= space.name %><br><u>Description: </u><br><%= space.description %><br><u>Price per Night: </u>£<%= space.price %><br>
+          </div>
+        </a>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br><br>
 

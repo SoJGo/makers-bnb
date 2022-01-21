@@ -1,3 +1,23 @@
+<div class='head'>
+  <ul>
+    <li>
+      <form action="/sessions/destroy" method="post">
+        <input type="submit" value="Sign Out"/>
+      </form>
+    </li>
+    <li>
+      <a href='/requests'><button>Requests</button></a>
+    </li>
+    <li>
+      <a href='/spaces'><button>Spaces</button></a>
+    </li>
+  </ul>
+</div>
+
+<h1 class='logo'> MAKERS<br>BnB </h1>
+
+<br>
+
 <h2><u>List a new Space</u></h2>
 
 <form action='/spaces/new' method='POST'>
@@ -16,10 +36,10 @@
  <br><br>
 
 <u>Available From:</u><br>
-  <input type='date' name='start_date' />
+  <input type='date' name='start_date' min=<%= DateTime.now.strftime("%Y-%m-%d") %>><br><br>
 
 <u>Available To:</u><br>
-  <input type='date' name='end_date' />
+  <input type='date' name='end_date' min=<%= DateTime.now.strftime("%Y-%m-%d") %>><br><br>
 
   <input type='submit' value='List space'>
   </p>
