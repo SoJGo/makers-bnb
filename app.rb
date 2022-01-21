@@ -25,9 +25,9 @@ class MakersBnB < Sinatra::Base
     @user = User.find(id: session[:user_id])
     @all_spaces = Space.all
     if params[:check_in] && params[:check_out]
-      @spaces = Bookings.available(spaces: @all_spaces, check_in: params[:check_in], check_out: params[:check_out])
+      @spaces = Bookings.check_dates_availability(spaces: @all_spaces, check_in: params[:check_in], check_out: params[:check_out])
     else
-      @spaces = Space.all
+      @spaces = Bookings.check_all_availability(spaces: @all_spaces)
     end
     erb :'spaces/index'
   end
