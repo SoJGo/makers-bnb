@@ -1,13 +1,19 @@
-<h3>
-  <%= flash[:notice] %>
-</h3>
+<div class='head'>
+  <ul>
+    <li>
+      <a href='/sessions/new'><button>Sign In</button></a>
+    </li>
+    <li>
+    <a href='/about'><button>About</button></a>
+    </li>
+  </ul>
+</div>
 
-<form action='/sessions/new' method='get'>
-   <input type='submit' value='Sign In'>
-</form>
-<h1>Makers BnB</h1>
+<h1 class='logo'> Makers<br>BnB </h1>
+
+<br>
+
 <h1><u>Join Makers BnB</u></h1>
-
 
 <form action='/users' method='POST'>
 <p><u>Name:</u><br>
@@ -26,5 +32,13 @@
   <input type='password' name='password'/>
 </p>
 
+<p><u>Confirm Password:</u><br>
+  <input type='password' name='password2'/>
+</p>
+
   <input type='submit' value='Join'>
 </form>
+
+<h3>
+  <%= flash[:notice] %>
+</h3>

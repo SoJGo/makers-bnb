@@ -1,19 +1,55 @@
-<h1> Request for <%= @space.name %>
-<br>
-From: User <%= @booker.username %>
-<br>
-Date: <%= @booking.date %>
+<div class='head'>
+  <ul>
+    <li>
+      <form action="/sessions/destroy" method="post">
+        <input type="submit" value="Sign Out"/>
+      </form>
+    </li>
+    <li>
+      <a href='/requests'><button>Requests</button></a>
+    </li>
+    <li>
+      <a href='/spaces'><button>Spaces</button></a>
+    </li>
+  </ul>
+</div>
+
+<h1 class='logo'> MAKERS<br>BnB </h1>
+
 <br>
 
+<h1> Request for: <%= @space.name %>
+<br>
+From: <%= @booker.username %>
+<br>
+Check-in: <%= @booking.check_in %>
+<br>
+Check-out: <%= @booking.check_out %>
+<br>
 </h1>
 
-<u>Other Requests for this Space:</u> <br>
+<br>
 
 <form action=<%= "/requests/confirm/#{@booking.id}" %> method='post'>
   <input type='submit' value='Confirm Request to Book'>
 </form>
-
+<br>
 <form action=<%= "/requests/deny/#{@booking.id}" %> method='post'>
   <input type='submit' value='Deny Request to Book'> 
 </form>
 
+<br><br>
+
+<h3><u>Other Requests for this Space</u> </h3>
+
+<br>
+
+<ul>
+  <% @requests_for_space.each do |request| %>
+    <li class='request'>
+      <%= request.confirmed %><br>
+      Check-in: <%= request.check_in %>   Check-out: <%= request.check_out %><br>
+      <a href=/requests/<%= request.id %>> [View this Request]</a><br><br>
+    </li>
+  <% end %>
+</ul>

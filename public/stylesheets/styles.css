@@ -1,32 +1,49 @@
 * {
-background: #6dbde2;
-text-align: center;
-
+  background: #6dbde2;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+h2 {
+  text-align: center;
+}
+
+.head li {
+  display: inline;
+  float: right;
+}
+
+.logo {
+  text-align: left;
+  padding-left: 30px;
+  padding-top: 10px;
+}
+
+button {
+  width: 80px;
+}
 .space {
   margin-left: auto;
   margin-right: auto;
-
 }
-
+  
 table {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   border: 1.5px solid black;
-  padding: 5px
+  padding: 5px;
 }
-
+  
 tr, td {
   text-align: left;
   border: 1.5px solid black;
-  padding: 20px 
+  padding: 20px;
 }
-
-
+  
+  
 h1 { 
-  font-family:Verdana, Geneva, Tahoma, sans-serif
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold; 
   margin-left: auto;
   margin-right: auto;
@@ -35,23 +52,7 @@ h1 {
   font-size: 28px;
 }
 
-h2 {
-
-}
-
-h3 {
-
-
-}
-
-li {
-
-}
-
-input {
-
-}
-
-p {
-
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
 }

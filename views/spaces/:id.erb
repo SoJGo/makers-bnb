@@ -1,8 +1,41 @@
-<%= @space.name %>, <%= @space.description %>, £<%= @space.price %> per night<br><br>
-Pick a date to book <br><br>
+<div class='head'>
+  <ul>
+    <li>
+      <form action="/sessions/destroy" method="post">
+        <input type="submit" value="Sign Out"/>
+      </form>
+    </li>
+    <li>
+      <a href='/requests'><button>Requests</button></a>
+    </li>
+    <li>
+      <a href='/spaces'><button>Spaces</button></a>
+    </li>
+  </ul>
+</div>
+
+<h1 class='logo'> MAKERS<br>BnB </h1>
+
+<br>
+
+Space:<br>
+<%= @space.name %><br><br>
+Description:<br>
+<%= @space.description %><br><br>
+Price per Night:<br>
+£<%= @space.price %><br><br>
+Availabilitly:<br>
+<%= @space.start_date %> - <%= @space.end_date %><br><br>
+
+
+
 <% if @user %>
+Pick dates to request a booking <br><br>
   <form action=<%= "/requests/#{@space.id}" %> method='post'>
-    <input type='date' name='date'><br><br>
+    Check-in:
+      <input type='date' name='check_in' min=<%= @space.start_date %> max=<%= @space.end_date %>><br><br>
+    Check-out:
+      <input type='date' name='check_out' min=<%= @space.start_date %> max=<%= @space.end_date %>><br><br>
     <input type='submit' value='Request to Book'>
   </form>
 <% end %>
