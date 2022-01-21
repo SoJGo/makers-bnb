@@ -21,6 +21,10 @@ class MakersBnB < Sinatra::Base
     session[:user_id] ? erb(:spaces) : erb(:index)
   end
 
+  get '/about' do
+    erb(:about)
+  end
+
   get '/spaces' do
     @user = User.find(id: session[:user_id])
     @all_spaces = Space.all
